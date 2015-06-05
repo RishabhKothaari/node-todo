@@ -1,0 +1,22 @@
+{
+  "name": "ngTodo",
+  "version": "0.0.1",
+  "description": "Simple app to maintain tasks.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "Rishab.I",
+  "license": "Apache 2.0",
+  "dependencies": {
+    "body-parser": "^1.12.4",
+    "express": "^4.12.4",
+    "method-override": "^2.3.3",
+    "mongoose": "^4.0.4",
+    "node-codein": "^1.0.5"
+  },
+  "devDependencies": {
+    "bower": "^1.4.1"
+  }
+}
