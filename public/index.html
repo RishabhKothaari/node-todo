@@ -1,60 +1,70 @@
 <html lang="en" charset="utf-8" ng-app="app">
 
-<head>
-  <link rel="stylesheet" href="\angular-material\angular-material.css" media="screen" title="no title" charset="utf-8">
-  <script src="\angular\angular.js"></script>
-  <script src="\angular-sanitize\angular-sanitize.js"></script>
-  <script src="\angular-aria\angular-aria.js"></script>
-  <script src="\angular-animate\angular-animate.js"></script>
-  <script src="\angular-material\angular-material.js"></script>
-  <script src="\app.js"></script>
-  <script src="http://localhost:35729/livereload.js?snipver=1"></script>
-  <title>Simple Todo App.</title>
-</head>
+	<head>
+		<link rel="stylesheet" href="\angular-material\angular-material.css" media="screen" title="no title" charset="utf-8">
+		<script src="\angular\angular.js"></script>
+		<script src="\angular-sanitize\angular-sanitize.js"></script>
+		<script src="\angular-aria\angular-aria.js"></script>
+		<script src="\angular-animate\angular-animate.js"></script>
+		<script src="\angular-material\angular-material.js"></script>
+		<script src="\app.js"></script>
+		<script src="http://localhost:35729/livereload.js?snipver=1"></script>
+		<title>Simple Todo App.</title>
+	</head>
 
-<body class="md-display-2">
-  <md-content>
-    <div layout="column" layout-align="center center">
-      <body class="md-display-2">
-        <md-content>
-          <div layout="column" layout-align="center center">
-            <h1 class="md-display-6">
-              Todos
-            </h1>
-          </div>
-          <div layout="column" flex layout-align="space-around center">
-            <div layout-padding>
-              I am in the top.
-            </div>
-            <div layout-padding>
-              I am in the bottom.
-            </div>
-          </div>
-        </md-content>
-        <md-content>
-          <div layout="row" flex layout-align="space-around start">
-            <div layout-padding>
-              I am in the left.
-            </div>
-            <div layout-padding>
-              I am in the right.
-            </div>
-          </div>
-        </md-content>
-        <div layout="column" layout-align="space-around center">
-          <md-content>
-            <section class="white-frame-z1">
-              <md-toolbar>
-                <div class="md-toolbar-tools">
-                  <h3>First tool bar</h3>
-                  <span flex></span>
-                  <md-button class="md-icon-button" aria-label="More">
-                    <md-icon md-svg-src="\material-design-icons\navigation\svg\design\ic_more_vert_24px.svg">
-                    </md-icon>
-                  </md-button>
-              </md-toolbar>
-            </section>
-          </md-content>
-          </div>
-      </body>
+	<body class="md-display-2">
+		<md-content>
+			<div layout="column" layout-align="center center">
+				<h1 class="md-display-6">
+					Todos
+				</h1>
+			</div>
+			<md-content>
+				<div layout="column" flex layout-align="space-around center">
+					<div layout-padding>
+						I am in the top.
+					</div>
+					<div layout-padding>
+						I am in the bottom.
+					</div>
+				</div>
+			</md-content>
+			<md-content>
+				<div layout="row" flex layout-align="space-around start">
+					<div layout-padding>
+						I am in the left.
+					</div>
+					<div layout-padding>
+						I am in the right.
+					</div>
+				</div>
+			</md-content>
+		</md-content>
+		<div layout="column" layout-align="center center" ng-controller="toolBarController">
+			<md-content>
+				<section class="white-frame-z1">
+					<md-toolbar>
+						<div class="md-toolbar-tools">
+							<h3>First tool bar</h3>
+							<span flex></span>
+							<md-button class="md-icon-button" aria-label="More" ng-click="showMoreTab=!showMoreTab">
+								<md-icon md-svg-src="\material-design-icons\navigation\svg\design\ic_more_vert_24px.svg">
+								</md-icon>
+							</md-button>
+						</div>
+					</md-toolbar>
+					<md-tabs md-no-pagination="true" ng-show="showMoreTab">
+						<md-tab label="More about your task.">
+							<md-content>
+								<md-tab-body>
+									Hello World...
+								</md-tab-body>
+							</md-content>
+						</md-tab>
+					</md-tabs>
+				</section>
+			</md-content>
+		</div>
+	</body>
+
 </html>
