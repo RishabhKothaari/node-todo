@@ -13,7 +13,7 @@
 		<title>Simple Todo App.</title>
 	</head>
 
-	<body>
+	<body layout-padding layout-margin>
 		<md-content>
 			<div class="md-display-2" layout="column" layout-align="center center">
 				<h1>
@@ -41,6 +41,26 @@
 				</div>
 			</md-content>
 		</md-content>
+		<div layout="row" style="padding:30px;" layout-margin ng-controller="todoController">
+			<form name="addTodoForm" layout="row" flex novalidate>
+				<div layout-align="start" flex>
+					<md-input-container class="md-accent">
+						<label class="md-display-3">New List</label>
+						<input type="text" name="newtask" ng-model="newTodo" required>
+						<div ng-messages="addTodoForm.newTodo.$error" ng-show="addTodoForm.newtask.$error && submit1">
+							<div ng-message="required">
+								Please add a task.
+							</div>
+						</div>
+					</md-input-container>
+				</div>
+				<div layout-align="end" class="md-actions">
+					<md-button class="md-primary md-raised" ng-click="addMainTask(newTodo,addTodoForm.$valid)">
+						add to list
+					</md-button>
+				</div>
+			</form>
+		</div>
 		<div layout="column" style="padding:30px;" layout-align="start" ng-controller="toolBarController">
 			<md-content style="background-color:rgb(255,255,255);">
 				<section class="white-frame-z1" ng-repeat="todo in todos">
@@ -50,24 +70,29 @@
 								{{todo.name}}
 							</md-checkbox>
 							<span flex></span>
-							<md-button class="md-icon-button md-toggle-icon" aria-label="More" ng-class="{'toggled':showMoreTab[todo.id]}" ng-click="todoClicked(todo.id)">
+							<md-button class="md-icon-button md-toggle-icon" aria-label="More" ng-class="{'toggled':showMoreTab[todo._id]}" ng-click="todoClicked(todo._id)">
 								<md-icon md-svg-src="/material-design-icons/navigation/svg/design/ic_expand_more_36px.svg">
 								</md-icon>
 							</md-button>
 						</div>
 					</md-toolbar>
 					<md-card style="margin:0px;">
-						<md-card-content ng-show="showMoreTab[todo.id]">
-							<form layout="row" name="subtasksForm">
+						<md-card-content ng-show="showMoreTab[todo._id]">
+							<form layout="row" name="subtasksForm" novalidate>
 								<div flex="66">
-									<md-input-container md-no-float class="md-accent" flex="66">
+									<md-input-container md-no-float class="md-accent">
 										<!-- <label class="md-display-5"></label> -->
-										<input type="text" name="name" placeholder="Add to this list." ng-model="todo.task">
+										<input type="text" name="task" placeholder="Add new item." ng-model="todo.task" required>
+										<div ng-messages="subtasksForm.task.$error" ng-show="subtasksForm.task.$error && submit2">
+											<div ng-message="required">
+												Please add a item to list.
+											</div>
+										</div>
 									</md-input-container>
 								</div>
 								<span flex></span>
-								<div class="md-actions" layout="end center">
-									<md-button class="md-raised md-primary md-icon-button" aria-label="Add" ng-click="addSubtasks(todo.id,todo.task)">
+								<div class="md-actions" layout-margin layout="end">
+									<md-button class="md-raised md-primary md-icon-button" aria-label="Add" ng-click="addSubtasks(todo._id,todo.task,subtasksForm.$valid)">
 										<md-icon md-svg-src="/material-design-icons/content/svg/design/ic_add_24px.svg">
 										</md-icon>
 									</md-button>
